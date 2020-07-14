@@ -1,0 +1,35 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "main": "src/main.tsx",
+  "scripts": {
+    "copy": "shx cp -r node_modules/@dojo/widgets/dist src/assets",
+    "dev": "npm run build:widgets && npm run move-to-assets && dojo build app -m dev -w -s",
+    "build:app:ghpages": "dojo build app --dojorc .dojorc-ghpages",
+    "build:app": "dojo build app -m dev",
+    "build:widgets": "dojo build widget -m dev",
+    "build:ghpages": "npm run build:widgets && npm run move-to-assets && npm run build:app:ghpages && npm run clean",
+    "build": "shx rm -rf src/assets && npm run copy && npm run build:app",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "test:ci": "echo no tests"
+  },
+  "dependencies": {
+    "@dojo/framework": "next",
+    "@dojo/widgets": "file:../widgets/dist/release/dojo-widgets-7.0.1-pre.tgz",
+    "@webcomponents/custom-elements": "~1.0.9",
+    "tslib": "~1.9.3"
+  },
+  "devDependencies": {
+    "@dojo/cli": "~7.0.1",
+    "@dojo/cli-build-app": "^7.0.1",
+    "@dojo/cli-build-widget": "next",
+    "@typescript-eslint/eslint-plugin": "2.25.0",
+    "@typescript-eslint/parser": "2.25.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.1",
+    "eslint-plugin-import": "2.20.2",
+    "shx": "^0.3.2",
+    "ts-loader": "5.4.5",
+    "typescript": "~3.4.5"
+  }
+}

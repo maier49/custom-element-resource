@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>custom-element</title>
+	<meta name="theme-color" content="#222127">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" />
+	<link rel="stylesheet" href="assets/list-7.0.1-pre.css" />
+	<style>
+		.menu-container {
+			padding: 10px;
+			margin-bottom: 20px;
+			background: white;
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+		}
+
+		code {
+			font-size: 14px;
+			height: 320px;
+		}
+
+		pre {
+			margin: 0;
+			background: white;
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+		}
+
+		.main-container {
+			margin: 16px;
+		}
+
+		.container {
+			width: 48%;
+			padding: 0 20px 20px 20px;
+			margin: 1%;
+			float: left;
+			background: #f3f3f3;
+			box-sizing: border-box;
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+		}
+
+	</style>
+<body>
+	<div class="main-container">
+		<div class="container">
+			<h2>Dojo Widget Menu</h2>
+			<h3>Demo</h3>
+			<div class="menu-container" id="widget"></div>
+			<h3>Code</h3>
+			<pre>
+				<code class="typescript">
+const Example = factory(({ id, middleware: { resource, icache } }) => {
+	return (
+		<virtual>
+			<List
+					resource={resource({ template, initOptions: { id, data: animals } })}
+					onValue={(value: string) => {
+					icache.set('value', value);
+				}}
+			/>
+			<p>{`Clicked on: ${icache.getOrSet('value', '')}`}</p>
+		</virtual>
+	);
+});
+				</code>
+			</pre>
+		</div>
+		<div class="container">
+			<h2>Custom Element Menu</h2>
+			<h3>Demo</h3>
+			<dojo-list id="list"/>
+			<script>
+				list.addEventListener('value', value => {
+					console.log(value);
+				});
+			</script>
+			<h3>Code</h3>
+			<pre>
+				<code class="html">
+&lt;dojo-resource id=&quot;resource&quot;&gt;
+  &lt;dojo-list id=&quot;list&quot;/&gt;
+&lt;/dojo-resource&gt;
+&lt;script&gt;
+resource.initOptions = {
+	id: "resource", data: [{ value: 'cat' }, { value: 'dog' }, { value: 'mouse' }, { value: 'rat' }]
+}
+&lt;/script&gt;
+				</code>
+			</pre>
+		</div>
+	</div>
+	<script src="assets/list-7.0.1-pre.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
