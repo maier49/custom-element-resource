@@ -10,7 +10,7 @@ const factory = create({ resource, icache })
 const Example = factory(({ id, middleware: { resource, icache } }) => {
 	const resourceProp = resource({
 		initOptions: {
-			id: 'resource',
+			id: 'resource-1',
 			data: animals
 		},
 		template: template

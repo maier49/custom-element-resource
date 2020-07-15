@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/pagination/nls/zh-CN/Pagination.ts"],"names":["__webpack_require__","r","__webpack_exports__","next","previous"],"mappings":";;;;;;;;2JAAAA,EAAAC,EAAAC,GAAeA,EAAA,SACdC,KAAM,MACNC,SAAU","file":"62-7.0.2-pre.js","sourcesContent":["export default {\n\tnext: '下一页',\n\tprevious: '上一页'\n};\n"],"sourceRoot":""}

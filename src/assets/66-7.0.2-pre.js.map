@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/select/nls/zh-CN/Select.tsx"],"names":["__webpack_require__","r","__webpack_exports__","requiredMessage"],"mappings":";;;;;;;;2JAAAA,EAAAC,EAAAC,GAAeA,EAAA,SACdC,gBAAiB","file":"66-7.0.2-pre.js","sourcesContent":["export default {\n\trequiredMessage: '请选择一个值。'\n};\n"],"sourceRoot":""}
