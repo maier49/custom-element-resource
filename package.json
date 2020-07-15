@@ -14,8 +14,8 @@
     "test:ci": "echo no tests"
   },
   "dependencies": {
-    "@dojo/framework": "next",
-    "@dojo/widgets": "file:../widgets/dist/release/dojo-widgets-7.0.1-pre.tgz",
+    "@dojo/framework": "file:framework.tgz",
+    "@dojo/widgets": "file:widgets.tgz",
     "@webcomponents/custom-elements": "~1.0.9",
     "tslib": "~1.9.3"
   },
