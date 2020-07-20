@@ -70,30 +70,32 @@ const Example = factory(({ id, middleware: { resource, icache } }) => {
 		<div class="container">
 			<h2>Custom Element Menu</h2>
 			<h3>Demo</h3>
-			<dojo-list id="list" dojoResourceInitOptions='{"id":"resource","data":[{"value":"cat"},{"value":"dog"},{"value":"mouse"},{"value":"rat"}]}'></dojo-list>
+			<dojo-list id="list" resource='{"initOptions":{"id":"resource","data":[{"value":"cat"},{"value":"dog"},{"value":"mouse"},{"value":"rat"}]}}'></dojo-list>
             <div>Another List</div>
 			<dojo-list id="anotherList"></dojo-list>
 			<script>
 				list.addEventListener('value', value => {
 					console.log(value);
 				});
-				anotherList.dojoResourceInitOptions = {
-					id: 'resource-2',
-					data: [{value: 'new value'}, { value: 'another new value'}]
-				};
-				anotherList.dojoResourceTemplate = {
-					read: async (request, controls) => {
-						const { offset, size, query } = request;
-						let data = [];
-						for (let i = offset; i < offset + size; i++) {
-							data.push({ value: i });
+				anotherList.resource = {
+                    template: {
+						read: async (request, controls) => {
+							const { offset, size, query } = request;
+							let data = [];
+							for (let i = offset; i < offset + size; i++) {
+								data.push({ value: i });
+							}
+							controls.put({ data: data, total: 10000 }, request);
+						},
+						find: async (request, controls) => {
+							controls.put({ item: { value: 1 }, index: 1 }, request);
 						}
-						controls.put({ data: data, total: 10000 }, request);
 					},
-					find: async (request, controls) => {
-						controls.put({ item: { value: 1 }, index: 1 }, request);
+					initOptions: {
+						id: 'resource-2',
+						data: [{value: 'new value'}, { value: 'another new value'}]
 					}
-				}
+				};
 			</script>
 			<h3>Code</h3>
 			<pre>

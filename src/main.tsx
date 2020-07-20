@@ -3,12 +3,12 @@ import {createMemoryResourceTemplate, createResourceMiddleware} from "@dojo/fram
 import List, {ListOption} from "@dojo/widgets/list";
 import icache from "@dojo/framework/core/middleware/icache";
 
-const resource = createResourceMiddleware();
+const banana = createResourceMiddleware();
 const animals = [{ value: 'cat' }, { value: 'dog' }, { value: 'mouse' }, { value: 'rat' }];
 const template = createMemoryResourceTemplate<ListOption>();
-const factory = create({ resource, icache })
-const Example = factory(({ id, middleware: { resource, icache } }) => {
-	const resourceProp = resource({
+const factory = create({ banana, icache })
+const Example = factory(({ id, middleware: { banana, icache } }) => {
+	const resourceProp = banana({
 		initOptions: {
 			id: 'resource-1',
 			data: animals
